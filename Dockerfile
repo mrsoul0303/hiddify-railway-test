@@ -1,7 +1,7 @@
 FROM caddy:builder AS builder
 
 RUN xcaddy build \
-    --with github.com/caddyserver/forwardproxy=github.com/klzgrad/forwardproxy
+    --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
 
 FROM caddy:latest
 
