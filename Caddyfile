@@ -1,1 +1,8 @@
 
+:{$PORT} {
+    forward_proxy {
+        basic_auth user password
+        hide_ip
+        hide_via
+    }
+}
