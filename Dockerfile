@@ -1,5 +1,7 @@
 FROM ubuntu:22.04
 
-RUN apt update && apt install -y curl wget
+RUN apt update && apt install -y python3
 
-CMD ["bash", "-c", "echo Railway container is running && sleep infinity"]
+EXPOSE 8080
+
+CMD ["python3", "-m", "http.server", "8080", "--bind", "0.0.0.0"]
