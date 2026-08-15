@@ -1,6 +1,6 @@
 :8080 {
     forward_proxy {
-        basic_auth user password
+        basic_auth test test123
         hide_ip
         hide_via
     }
