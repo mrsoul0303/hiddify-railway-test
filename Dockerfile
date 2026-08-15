@@ -1,7 +1,11 @@
-FROM ubuntu:22.04
+FROM caddy:builder AS builder
 
-RUN apt update && apt install -y python3
+RUN xcaddy build --with github.com/klzgrad/forwardproxy
 
-EXPOSE 8080
+FROM caddy:latest
 
-CMD ["python3", "-m", "http.server", "8080", "--bind", "0.0.0.0"]
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+
+COPY Caddyfile /etc/caddy/Caddyfile
+
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
